@@ -186,7 +186,9 @@ th, td{
 
     <div class="loader"></div>
 
-    <h1>Sedang membuka data ARIF GANTENG 😄</h1>
+    <h2>Mohon tunggu sebentar ya 😄</h2>
+
+    <p>Kami sedang membaca data Arif ganteng 🚀</p>
 
 </div>
 
@@ -235,10 +237,10 @@ Dashboard Customer
 <tr>
 <th>Nama Customer</th>
 <th>Nomor Telepon</th>
-<th>Nama Toko Usaha</th>
-<th>Alamat Toko usaha</th>
-<th>Progress Chat</th>
-<th>Follow up terakhir</th>
+<th>Nama Toko</th>
+<th>Alamat Toko</th>
+<th>Perkembangan</th>
+<th>FU Terakhir</th>
 <th>Rencana Order</th>
 <th>WhatsApp</th>
 </tr>
@@ -254,9 +256,11 @@ Dashboard Customer
 
 <script>
 
-/* GANTI DENGAN LINK APPS SCRIPT */
+/* =========================
+   GANTI DENGAN LINK APPS SCRIPT
+========================= */
 
-const api = "https://script.google.com/macros/s/AKfycbz1nYyDbhM7aouZA7bkc-eXhafDckq4QIhytl0JHgXCdvAb8v-znFyp1caW8xbkkIcr/exec";
+const api = "https://script.google.com/macros/s/AKfycbyOQzmI1U1g-VhLiLR-pT-67cDi1A9s25TmySve7UElnrkAiOvlAHeV8mFmPHtG2vxgcQ/exec";
 
 let allData = [];
 
@@ -281,7 +285,7 @@ function renderData(data){
 
     data.forEach(item => {
 
-        let progress = item["Progress Chat"] || "";
+        let progress = item["Perkembangan"] || "";
 
         let badgeClass = "pending";
 
@@ -302,17 +306,17 @@ function renderData(data){
 
             <td>${item["Nomor Telepon"] || ""}</td>
 
-            <td>${item["Nama Toko Usaha"] || ""}</td>
+            <td>${item["Nama Toko"] || ""}</td>
 
-            <td>${item["Alamat Toko usaha"] || ""}</td>
+            <td>${item["Alamat Toko"] || ""}</td>
 
             <td>
                 <span class="badge ${badgeClass}">
-                    ${item["Progress Chat"] || ""}
+                    ${item["Perkembangan"] || ""}
                 </span>
             </td>
 
-            <td>${item["Follow up terakhir"] || ""}</td>
+            <td>${item["FU Terakhir"] || ""}</td>
 
             <td>${item["Rencana Order"] || ""}</td>
 
