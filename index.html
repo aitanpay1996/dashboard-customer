@@ -134,7 +134,9 @@ tr:hover{
 
     <div class="loader"></div>
 
-    <h2>Membuka data ARIF GANTENG 😄</h2>
+    <h2>Mohon tunggu sebentar ya 😄</h2>
+
+    <p>Kami sedang membaca data Arif ganteng 🚀</p>
 
 </div>
 
@@ -183,10 +185,10 @@ Dashboard Customer
 <script>
 
 /* =========================
-   GANTI DENGAN LINK APPS SCRIPT
+   GANTI LINK APPS SCRIPT
 ========================= */
 
-const api = "https://script.google.com/macros/s/AKfycbyOQzmI1U1g-VhLiLR-pT-67cDi1A9s25TmySve7UElnrkAiOvlAHeV8mFmPHtG2vxgcQ/exec";
+const api = "PASTE_LINK_APPS_SCRIPT_DISINI";
 
 let allData = [];
 
@@ -196,15 +198,17 @@ function formatText(text){
 
     if(!text) return "";
 
-    return text.replace(/\n/g, "<br>");
+    return String(text).replace(/\n/g, "<br>");
 
 }
 
 /* FETCH DATA */
 
 fetch(api)
-.then(response => response.json())
-.then(data => {
+.then(res => res.text())
+.then(text => {
+
+    const data = JSON.parse(text);
 
     allData = data;
 
@@ -219,7 +223,7 @@ fetch(api)
 
     document.getElementById("loading").innerHTML = `
         <h2>Gagal mengambil data 😢</h2>
-        <p>Coba tanya ARIF GANTENG ya</p>
+        <p>Cek kembali Apps Script kamu</p>
     `;
 
 });
