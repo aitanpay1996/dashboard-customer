@@ -218,6 +218,14 @@ fetch(api)
 
 });
 
+function formatText(text){
+
+    if(!text) return "";
+
+    return text.replace(/\n/g, "<br>");
+
+}
+
 function renderData(data){
 
     let html = "";
@@ -227,19 +235,19 @@ function renderData(data){
         html += `
         <tr>
 
-            <td>${item["Nama Customer"] || ""}</td>
+            <td>${formatText(item["Nama Customer"])}</td>
 
-            <td>${item["Nomor Telepon"] || ""}</td>
+            <td>${formatText(item["Nomor Telepon"])}</td>
 
-            <td>${item["Nama Toko"] || ""}</td>
+            <td>${formatText(item["Nama Toko"])}</td>
 
-            <td>${item["Alamat Toko"] || ""}</td>
+            <td>${formatText(item["Alamat Toko"])}</td>
 
-            <td>${item["Perkembangan"] || ""}</td>
+            <td>${formatText(item["Perkembangan"])}</td>
 
-            <td>${item["FU Terakhir"] || ""}</td>
+            <td>${formatText(item["FU Terakhir"])}</td>
 
-            <td>${item["Rencana Order"] || ""}</td>
+            <td>${formatText(item["Rencana Order"])}</td>
 
         </tr>
         `;
