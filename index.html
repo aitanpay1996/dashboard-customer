@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Dashboard Customer Potensial</title>
+<title>Dashboard Customer</title>
 
 <style>
 
@@ -88,6 +88,7 @@ body{
     border-radius:12px;
     border:1px solid #ddd;
     font-size:16px;
+    outline:none;
 }
 
 /* TABLE */
@@ -101,6 +102,7 @@ body{
 
 table{
     width:100%;
+    min-width:1200px;
     border-collapse:collapse;
 }
 
@@ -114,15 +116,7 @@ th, td{
     border-bottom:1px solid #eee;
     text-align:left;
     vertical-align:top;
-    word-break:break-word;
-}
-
-/* BIAR KOLOM BISA TURUN */
-
-table{
-    width:100%;
-    border-collapse:collapse;
-    table-layout:fixed;
+    white-space:pre-line;
 }
 
 tr:hover{
@@ -147,7 +141,7 @@ tr:hover{
 <!-- HEADER -->
 
 <div class="header">
-Dashboard Customer Potensial
+Dashboard Customer
 </div>
 
 <!-- CONTENT -->
@@ -192,9 +186,21 @@ Dashboard Customer Potensial
    GANTI DENGAN LINK APPS SCRIPT
 ========================= */
 
-const api = "https://script.google.com/macros/s/AKfycbyOQzmI1U1g-VhLiLR-pT-67cDi1A9s25TmySve7UElnrkAiOvlAHeV8mFmPHtG2vxgcQ/exec";
+const api = "PASTE_LINK_APPS_SCRIPT_DISINI";
 
 let allData = [];
+
+/* FORMAT ALT + ENTER */
+
+function formatText(text){
+
+    if(!text) return "";
+
+    return text.replace(/\n/g, "<br>");
+
+}
+
+/* FETCH DATA */
 
 fetch(api)
 .then(response => response.json())
@@ -213,18 +219,12 @@ fetch(api)
 
     document.getElementById("loading").innerHTML = `
         <h2>Gagal mengambil data 😢</h2>
-        <p>Cek kembali Apps Script kamu</p>
+        <p>Coba tanya ARIF GANTENG ya</p>
     `;
 
 });
 
-function formatText(text){
-
-    if(!text) return "";
-
-    return text.replace(/\n/g, "<br>");
-
-}
+/* RENDER TABLE */
 
 function renderData(data){
 
