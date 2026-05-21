@@ -19,6 +19,49 @@ body{
     background:#f4f7fb;
 }
 
+/* LOADING */
+
+#loading{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:white;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+.loader{
+    width:60px;
+    height:60px;
+    border:6px solid #ddd;
+    border-top:6px solid #0f172a;
+    border-radius:50%;
+    animation:spin 1s linear infinite;
+    margin-bottom:20px;
+}
+
+@keyframes spin{
+    100%{
+        transform:rotate(360deg);
+    }
+}
+
+#loading h2{
+    margin-bottom:10px;
+    color:#0f172a;
+}
+
+#loading p{
+    color:#666;
+}
+
+/* HEADER */
+
 .header{
     background:#0f172a;
     color:white;
@@ -27,9 +70,13 @@ body{
     font-weight:bold;
 }
 
+/* CONTAINER */
+
 .container{
     padding:20px;
 }
+
+/* CARDS */
 
 .cards{
     display:grid;
@@ -54,6 +101,8 @@ body{
     font-size:36px;
 }
 
+/* SEARCH */
+
 .search{
     margin-bottom:20px;
 }
@@ -65,6 +114,8 @@ body{
     border:1px solid #ddd;
     font-size:16px;
 }
+
+/* TABLE */
 
 .table-wrapper{
     overflow-x:auto;
@@ -90,6 +141,8 @@ th, td{
     white-space:nowrap;
 }
 
+/* BADGE */
+
 .badge{
     padding:6px 12px;
     border-radius:20px;
@@ -110,6 +163,8 @@ th, td{
     background:red;
 }
 
+/* BUTTON */
+
 .btn{
     background:#25D366;
     color:white;
@@ -125,9 +180,25 @@ th, td{
 
 <body>
 
+<!-- LOADING -->
+
+<div id="loading">
+
+    <div class="loader"></div>
+
+    <h2>Mohon tunggu sebentar ya 😄</h2>
+
+    <p>Kami sedang membaca data Arif ganteng 🚀</p>
+
+</div>
+
+<!-- HEADER -->
+
 <div class="header">
 Dashboard Customer
 </div>
+
+<!-- CONTENT -->
 
 <div class="container">
 
@@ -150,9 +221,13 @@ Dashboard Customer
 
 </div>
 
+<!-- SEARCH -->
+
 <div class="search">
 <input type="text" id="search" placeholder="Cari customer...">
 </div>
+
+<!-- TABLE -->
 
 <div class="table-wrapper">
 
@@ -181,9 +256,7 @@ Dashboard Customer
 
 <script>
 
-/* =========================
-   PASTE LINK APPS SCRIPT
-========================= */
+/* GANTI DENGAN LINK APPS SCRIPT */
 
 const api = "https://script.google.com/macros/s/AKfycbz1nYyDbhM7aouZA7bkc-eXhafDckq4QIhytl0JHgXCdvAb8v-znFyp1caW8xbkkIcr/exec";
 
@@ -196,6 +269,8 @@ fetch(api)
     allData = data;
 
     renderData(data);
+
+    document.getElementById("loading").style.display = "none";
 
 });
 
@@ -224,7 +299,6 @@ function renderData(data){
 
         html += `
         <tr>
-
 
             <td>${item["Nama Customer"] || ""}</td>
 
@@ -266,9 +340,7 @@ function renderData(data){
     document.getElementById("follow").innerText = follow;
 }
 
-/* =========================
-   SEARCH CUSTOMER
-========================= */
+/* SEARCH */
 
 document
 .getElementById("search")
